@@ -53,6 +53,10 @@ export default function createCore() {
        * }} params
        * @returns {Promise<{
        *   isValid: boolean;
+       *   warnings: {
+       *     message: string;
+       *     instancePath: string;
+       *   }[];
        *   errors: {
        *     message?: string | undefined;
        *     instancePath: string;

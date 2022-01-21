@@ -4,13 +4,14 @@ import createCore from '../lib/shared/Core'
 import { DocumentEntity } from '../lib/shared/Core/entities'
 import fixture from './Core/coreFixture'
 import documentTests from './Core/documentTests'
+import optionalTests from './Core/optionalTests'
 
 suite('Core', () => {
   const core = createCore()
 
-  suite('documentTests', () => {
+  suite('mandatoryTests', () => {
     documentTests.forEach((documentTest, i) => {
-      test(documentTest.title ?? `Test #${i + 1}`, async () => {
+      test(documentTest.title ?? `Mandatory Test #${i + 1}`, async () => {
         const result = await core.document.validate({
           document: documentTest.content,
           strict: false,
@@ -27,6 +28,23 @@ suite('Core', () => {
         } else {
           expect(result.errors).have.length.greaterThan(0)
         }
+      })
+    })
+  })
+
+  suite('optionalTests', () => {
+    optionalTests.forEach((documentTest, i) => {
+      test(documentTest.title ?? `Optional Test #${i + 1}`, async () => {
+        const result = await core.document.validate({
+          document: documentTest.content,
+          strict: false,
+        })
+        expect(result.isValid).to.be.true
+        expect(result.errors).to.have.lengthOf(0)
+        expect(
+          result.warnings.length,
+          'Document has the correct number of warnings'
+        ).to.equal(documentTest.expectedNumberOfWarnings)
       })
     })
   })

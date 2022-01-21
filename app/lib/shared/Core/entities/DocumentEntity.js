@@ -30,6 +30,7 @@ import mandatoryTest_6_1_3 from './DocumentEntity/mandatoryTest_6_1_3'
 import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import mandatoryTest_6_1_9 from './DocumentEntity/mandatoryTest_6_1_9'
+import { optionalTest_6_2_2 } from './DocumentEntity/optionalTests'
 
 /**
  * This class abstracts central logic regarding the json-document used
@@ -651,8 +652,19 @@ export default class DocumentEntity {
       errors.push(...result.errors)
     })
 
+    const optionalTests = [
+      optionalTest_6_2_2
+    ]
+    /** @type {Array<{ message: string; instancePath: string }>} */
+    const warnings = []
+    optionalTests.forEach((test) => {
+      const result = test(doc)
+      warnings.push(...result.warnings)
+    })
+
     return {
       isValid,
+      warnings,
       errors: errors,
     }
   }
