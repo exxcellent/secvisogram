@@ -18,6 +18,17 @@ export default [
           product_status: {
             last_affected: ['CSAFPID-9080700'],
           },
+          scores: [
+            {
+              products: ['CSAFPID-9080700'],
+              cvss_v3: {
+                version: '3.0',
+                baseScore: 9.8,
+                baseSeverity: 'CRITICAL',
+                vectorString: 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+              },
+            },
+          ],
         },
       ],
     },
@@ -41,6 +52,17 @@ export default [
           product_status: {
             last_affected: ['CSAFPID-9080700'],
           },
+          scores: [
+            {
+              products: ['CSAFPID-9080700'],
+              cvss_v3: {
+                version: '3.0',
+                baseScore: 9.8,
+                baseSeverity: 'CRITICAL',
+                vectorString: 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+              },
+            },
+          ],
           remediations: [
             {
               product_ids: ['CSAFPID-9080700'],
@@ -52,5 +74,35 @@ export default [
       ],
     },
     expectedNumberOfWarnings: 0,
+  },
+
+  {
+    title: 'Optional test 6.2.3 detects unmatched first_affected entry',
+    content: {
+      ...minimalDoc,
+      product_tree: {
+        full_product_names: [
+          {
+            product_id: 'CSAFPID-9080700',
+            name: 'Product A',
+          },
+        ],
+      },
+      vulnerabilities: [
+        {
+          product_status: {
+            first_affected: ['CSAFPID-9080700'],
+          },
+          remediations: [
+            {
+              product_ids: ['CSAFPID-9080700'],
+              category: 'none_available',
+              details: 'Some details',
+            },
+          ],
+        },
+      ],
+    },
+    expectedNumberOfWarnings: 1,
   },
 ]
