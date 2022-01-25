@@ -34,6 +34,7 @@ import {
   optionalTest_6_2_2,
   optionalTest_6_2_3,
   optionalTest_6_2_4,
+  optionalTest_6_2_6
 } from './DocumentEntity/optionalTests'
 
 /**
@@ -660,6 +661,7 @@ export default class DocumentEntity {
       optionalTest_6_2_2,
       optionalTest_6_2_3,
       optionalTest_6_2_4,
+      optionalTest_6_2_6
     ]
     /** @type {Array<{ message: string; instancePath: string }>} */
     const warnings = []

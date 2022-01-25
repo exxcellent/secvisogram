@@ -115,11 +115,41 @@ export default [
         tracking: {
           ...minimalDoc.document.tracking,
           version: '1.0.0+exp.sha.ac00785',
+          current_release_date: '2021-04-23T10:00:00.000Z',
           revision_history: [
             {
               date: '2021-04-23T10:00:00.000Z',
               number: '1.0.0+exp.sha.ac00785',
               summary: 'Initial version.',
+            },
+          ],
+        },
+      },
+    },
+    expectedNumberOfWarnings: 1,
+  },
+
+  {
+    title:
+      'Optional test 6.2.6 detects older current release date than revision history',
+    content: {
+      ...minimalDoc,
+      document: {
+        ...minimalDoc.document,
+        tracking: {
+          ...minimalDoc.document.tracking,
+          version: '2',
+          initial_release_date: '2021-04-22T10:00:00.000Z',
+          revision_history: [
+            {
+              date: '2021-05-06T10:00:00.000Z',
+              number: '1',
+              summary: 'Initial version.',
+            },
+            {
+              date: '2021-07-21T11:00:00.000Z',
+              number: '2',
+              summary: 'Second version.',
             },
           ],
         },
