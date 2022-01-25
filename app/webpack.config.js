@@ -23,6 +23,10 @@ module.exports = {
           ],
         }),
   },
+  externals: {
+    fs: 'fs',
+    path: 'path',
+  },
   module: {
     rules: [
       { test: /\.js$/, use: 'babel-loader' },

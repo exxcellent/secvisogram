@@ -13,7 +13,12 @@
   "scripts": {
     "test": "eslint . && node scripts/test.js",
     "build": "node scripts/build.js",
-    "dev": "webpack serve --mode development --port=$npm_config_port"
+    "dev": "webpack serve --mode development --port=$npm_config_port",
+    "test-coverage": "npm run -s test-coverage:clean && npm run -s test-coverage:build && npm run -s test-coverage:run",
+    "test-coverage:clean": "rm -rf coverage coverage-run .nyc_output && mkdir .nyc_output",
+    "test-coverage:build": "babel --env-name coverage -D -d coverage-run/lib lib && babel --env-name test -D -d coverage-run/tests tests && cp -R seeds coverage-run",
+    "test-coverage:run": "node scripts/test.js coverage; rm -rf coverage-run",
+    "coverage-report": "nyc report"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -40,6 +45,7 @@
     "shallowequal": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",
@@ -57,6 +63,7 @@
     "@types/xml2js": "^0.4.9",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
+    "babel-plugin-istanbul": "^6.1.1",
     "chai": "^4.3.4",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
@@ -69,6 +76,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.0",
     "mocha": "^9.1.4",
+    "nyc": "^15.1.0",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
     "raw-loader": "^4.0.2",

@@ -6,6 +6,8 @@
     "dev": "cd app && npm run dev",
     "build": "cd app && npm run build",
     "test": "tsc -b . && cd app && npm test",
+    "test-coverage": "cd app && npm run -s test-coverage",
+    "coverage-report": "cd app && npm run -s coverage-report",
     "postinstall": "npm run -s install:app && npm run -s install:bin",
     "install:app": "cd app && npm ci",
     "install:bin": "cd bin && npm ci",

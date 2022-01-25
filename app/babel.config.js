@@ -1,3 +1,11 @@
+const TEST_CONFIG = {
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }],
+    '@babel/preset-react',
+  ],
+  compact: true,
+}
+
 module.exports = {
   env: {
     development: {
@@ -7,13 +15,11 @@ module.exports = {
       ],
       compact: false,
     },
-    test: {
-      presets: [
-        ['@babel/preset-env', { targets: { node: 'current' } }],
-        '@babel/preset-react',
-      ],
-      compact: true,
+    coverage: {
+      ...TEST_CONFIG,
+      plugins: ['istanbul'],
     },
+    test: TEST_CONFIG,
     production: {
       presets: [
         ['@babel/preset-env', { modules: false, targets: { esmodules: true } }],

@@ -20,6 +20,7 @@ module.exports = {
     suite: true,
     setup: true,
     teardown: true,
+    suiteTeardown: true,
     test: true,
     mocha: true,
     ace: true,

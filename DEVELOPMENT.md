@@ -120,11 +120,13 @@ Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across c
 
 ## Building Secvisogram
 
-| Command         | Purpose                                                             |
-| --------------- | ------------------------------------------------------------------- |
-| `npm run dev`   | Starts the development server                                       |
-| `npm test`      | Runs typecheck, the linter and the test suite                       |
-| `npm run build` | Builds the application as a static asset and places it into `dist/` |
+| Command                   | Purpose                                                             |
+| ------------------------- | ------------------------------------------------------------------- |
+| `npm run dev`             | Starts the development server                                       |
+| `npm test`                | Runs typecheck, the linter and the test suite                       |
+| `npm run test-coverage`   | Runs the test suite and records coverage data                       |
+| `npm run coverage-report` | Runs the test suite and records coverage data                       |
+| `npm run build`           | Builds the application as a static asset and places it into `dist/` |
 
 <a id="markdown-building--deploying-secvisogram-into-production" name="building--deploying-secvisogram-into-production"></a>
 
