@@ -105,4 +105,26 @@ export default [
     },
     expectedNumberOfWarnings: 1,
   },
+
+  {
+    title: 'Optional test 6.2.4 detects build metadata in revision history',
+    content: {
+      ...minimalDoc,
+      document: {
+        ...minimalDoc.document,
+        tracking: {
+          ...minimalDoc.document.tracking,
+          version: '1.0.0+exp.sha.ac00785',
+          revision_history: [
+            {
+              date: '2021-04-23T10:00:00.000Z',
+              number: '1.0.0+exp.sha.ac00785',
+              summary: 'Initial version.',
+            },
+          ],
+        },
+      },
+    },
+    expectedNumberOfWarnings: 1,
+  },
 ]
